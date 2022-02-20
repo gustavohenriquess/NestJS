@@ -19,20 +19,20 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "mysql:start": "docker run --name mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest",
+    "mysql:start": "docker run --name mysql -p 3306:3306  -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest",
     "mysql:stop": "docker stop mysql"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
-    "@nestjs/sequelize": "^8.0.0",
-    "mysql2": "^2.3.3",
+    "@nestjs/sequelize": "0.1.1",
+    "mysql2": "2.2.5",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
     "sequelize": "5",
-    "sequelize-typescript": "^2.1.3"
+    "sequelize-typescript": "1.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
