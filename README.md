@@ -21,9 +21,9 @@ $ yarn start:dev
 $ yarn start:prod
 ```
 
-## API Documentatio
+## API Documentation
 
-see the api documentation in docs_api folder.
+see the API documentation made by insomnia in the docs_api folder
 
 ## extra commands
 
