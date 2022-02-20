@@ -8,3 +8,8 @@ yarn add @nestjs/cli --global
 
 - nest -v
 - nest new PROJECT-NAME
+
+## Commands created by NestJS
+
+- yarn start
+- yarn start:dev
