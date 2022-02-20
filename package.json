@@ -20,7 +20,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "mysql:start": "docker run --name mysql -p 3306:3306  -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest",
-    "mysql:stop": "docker stop mysql"
+    "mysql:stop": "docker stop mysql",
+    "mysql:bash": "docker exec -it mysql bash"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
