@@ -1,12 +1,11 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { UsuarioService } from './usuario.service';
 
 @Controller('users')
 export class UsuarioController {
-  private usuarios = [];
-
+  constructor(private usuarioService: UsuarioService) {}
   @Post()
   public cria(@Body() usuario) {
-    this.usuarios.push(usuario);
-    return usuario;
+    return this.usuarioService.cria(usuario);
   }
 }
