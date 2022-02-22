@@ -1,3 +1,25 @@
+import {
+  registerDecorator,
+  ValidationArguments,
+  ValidationOptions,
+  ValidatorConstraint,
+  ValidatorConstraintInterface,
+} from 'class-validator';
+import { UsuarioService } from './usuario.service';
+
+@ValidatorConstraint()
+export class IsNomeDeUsuarioUnicoConstraint
+  implements ValidatorConstraintInterface {
+  constructor(private usuarioService: UsuarioService) {}
+
+  validate(
+    nomeDeUsuario: string,
+    validationArguments?: ValidationArguments,
+  ): boolean {
+    return !!!this.usuarioService.buscaPorNomeDeUsuario(nomeDeUsuario);
+  }
+}
+
 export function IsUserAlreadyExist(
   validationOptions?: ValidationOptions,
 ): (object: Object, propertyName: string) => void {
@@ -7,7 +29,7 @@ export function IsUserAlreadyExist(
       propertyName: propertyName,
       options: validationOptions,
       constraints: [],
-      validator: IsUserAlreadyExistConstraint,
+      validator: IsNomeDeUsuarioUnicoConstraint,
     });
   };
 }
