@@ -20,7 +20,7 @@ export class IsNomeDeUsuarioUnicoConstraint
   }
 }
 
-export function IsUserAlreadyExist(
+export function IsNomeDeUsuarioUnico(
   validationOptions?: ValidationOptions,
 ): (object: Object, propertyName: string) => void {
   return function(object: Object, propertyName: string) {
