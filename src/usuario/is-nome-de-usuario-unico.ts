@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import {
   registerDecorator,
   ValidationArguments,
@@ -7,6 +8,7 @@ import {
 } from 'class-validator';
 import { UsuarioService } from './usuario.service';
 
+@Injectable()
 @ValidatorConstraint()
 export class IsNomeDeUsuarioUnicoConstraint
   implements ValidatorConstraintInterface {
