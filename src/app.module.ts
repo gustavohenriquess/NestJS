@@ -1,28 +1,16 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config/dist/config.module';
-import { SequelizeModule } from '@nestjs/sequelize/dist/sequelize.module';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { Livro } from './livro.model';
-import { LivrosController } from './livros.controller';
-import { LivrosService } from './livros.service';
+import { ClassSerializerInterceptor, Module } from '@nestjs/common';
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+import { FiltroDeExcecaoHttp } from './common/filtros/filtro-de-excexao-http.filter';
+import { TransformaRespostaInterceptor } from './usuario/core/http/transforma-resposta-interceptor';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot(),
-    SequelizeModule.forRoot({
-      dialect: 'mysql',
-      host: process.env.HOST_DB,
-      port: 3306,
-      username: process.env.USER_DB,
-      password: process.env.PWD_DB,
-      database: 'livraria',
-      autoLoadModels: true,
-      synchronize: true,
-    }),
-    SequelizeModule.forFeature([Livro]),
+  imports: [UsuarioModule],
+  controllers: [],
+  providers: [
+    { provide: APP_INTERCEPTOR, useClass: ClassSerializerInterceptor },
+    { provide: APP_INTERCEPTOR, useClass: TransformaRespostaInterceptor },
+    { provide: APP_FILTER, useClass: FiltroDeExcecaoHttp },
   ],
-  controllers: [AppController, LivrosController],
-  providers: [AppService, LivrosService],
 })
 export class AppModule {}

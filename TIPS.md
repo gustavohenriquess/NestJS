@@ -13,3 +13,7 @@ yarn add @nestjs/cli --global
 
 - yarn start
 - yarn start:dev
+
+## Docs
+
+- https://docs.nestjs.com/controllers#route-wildcards
